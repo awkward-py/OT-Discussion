@@ -143,7 +143,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
               <FormLabel className="paragraph-semibold text-dark400_light800">Detailed explanation of your problem <span className="text-primary-500">*</span></FormLabel>
               <FormControl className="mt-3.5">
               <Editor
-                apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                apiKey='btr2dcdyvsgufny4fqo0etvrtkhen00knrjzyhgx1vusu2fb'
                 onInit={(evt, editor) => {
                   // @ts-ignore
                   editorRef.current = editor
