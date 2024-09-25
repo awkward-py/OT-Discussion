@@ -2,26 +2,25 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "builds": [
-    { "src": "package.json", "use": "@vercel/next" }
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
   ],
   "outputDirectory": "out",
   "ignore": [
     "node_modules",
     ".git",
     "README.md",
-    "src/**/*.test.js",  
-    "src/**/*.spec.js"   
+    "src/**/*.test.js",
+    "src/**/*.spec.js",
+    "src/**/__mocks__/**",  
+    "src/**/__tests__/**"   
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/$1"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/old-path",
-      "destination": "/new-path"
     }
   ],
   "headers": [
@@ -34,5 +33,8 @@
         }
       ]
     }
-  ]
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://your-api-url.com"  
+  }
 }
