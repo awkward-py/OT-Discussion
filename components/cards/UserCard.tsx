@@ -1,8 +1,7 @@
-import { getTopInteractedTags } from "@/lib/actions/tag.actions";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "../ui/badge";
-import RenderTag from "../shared/RenderTag";
+
 
 interface Props {
   user: {
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const UserCard = async ({ user }: Props) => {
-  const interactedTags = await getTopInteractedTags({ userId: user._id })
+  
 
   return (
     <Link href={`/profile/${user.clerkId}`} className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[260px]">
