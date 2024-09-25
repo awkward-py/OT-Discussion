@@ -1,6 +1,5 @@
 "use client"
 import React, { useRef, useState } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from 'react-hook-form';
@@ -29,8 +28,6 @@ interface Props {
 }
 
 const Question = ({ type, mongoUserId, questionDetails }: Props) => {
-  const { mode } = useTheme();
-  const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
