@@ -77,7 +77,7 @@ const GlobalSearch = () => {
 
         <Input
           type="text"
-          placeholder="Search: Users, Problems, Tags, Jobs, Community, and More"
+          placeholder="Search: Users, Problems, Tags, Discussions, and More"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);

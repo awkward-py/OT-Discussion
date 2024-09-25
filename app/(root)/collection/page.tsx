@@ -55,8 +55,8 @@ export default async function Home({ searchParams }: SearchParamsProps) {
             />
           ))
           : <NoResult 
-            title="There’s no question saved to show"
-            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            title="No Saved Questions or Discussions in Your Collection"
+            description="No saved questions yet! Keep track of your favorites by saving them into your collection. Your insights deserve to be remembered—start building your collection today! 💡"
             link="/ask-question"
             linkTitle="Ask a Question"
           />}

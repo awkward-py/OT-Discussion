@@ -1,15 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React, { ReactNode } from 'react'
+
+
 
 interface MetricProps {
   imgUrl: string;
   alt: string;
-  value: string | number;
+  value: string | number | ReactNode; 
   title: string;
   href?: string;
   textStyles?: string;
   isAuthor?: boolean;
+ 
 }
 
 const Metric = ({
@@ -20,15 +23,16 @@ const Metric = ({
   href,
   textStyles,
   isAuthor,
+
 }: MetricProps) => {
   const metricContent = (
     <>
-      <Image 
+      <Image
         src={imgUrl}
         width={16}
         height={16}
         alt={alt}
-        className={`object-contain ${href ? 'rounded-full' : ''}`}
+        className={` ${href ? 'rounded-full object-cover w-[16px] h-[16px] overflow-hidden ' : ''}`}
       />
 
       <p className={`${textStyles} flex items-center gap-1`}>

@@ -13,8 +13,8 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png"
-          width={25}
-          height={25}
+          width={28}
+          height={28}
           alt="OT Discussion"
         />
 

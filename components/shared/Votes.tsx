@@ -120,8 +120,8 @@ const Votes = ({
         <div className="flex-center gap-1.5">
           <Image 
             src={hasupVoted
-              ? '/assets/icons/upvoted.svg'
-              : '/assets/icons/upvote.svg'
+              ? '/assets/icons/star-fill.svg'
+              : '/assets/icons/star-line.svg'
             }
             width={18}
             height={18}
@@ -161,8 +161,8 @@ const Votes = ({
       {type === 'Question' && (
         <Image 
           src={hasSaved
-            ? '/assets/icons/star-filled.svg'
-            : '/assets/icons/star-red.svg'
+            ? '/assets/icons/love-fill.svg'
+            : '/assets/icons/love-line.svg'
           }
           width={18}
           height={18}

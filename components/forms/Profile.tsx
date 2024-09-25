@@ -105,12 +105,12 @@ const Profile = ({ clerkId, user }: Props) => {
           render={({ field }) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
-                Portfolio Link
+                Social Link
               </FormLabel>
               <FormControl>
                 <Input 
                   type="url"
-                  placeholder="Your portfolio URL" 
+                  placeholder="Your Social URL" 
                   className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
                   {...field} 
                 />
@@ -126,11 +126,11 @@ const Profile = ({ clerkId, user }: Props) => {
           render={({ field }) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
-                Location 
+              Stream
               </FormLabel>
               <FormControl>
                 <Input 
-                  placeholder="Where are you from?" 
+                  placeholder="Enter your stream (e.g., CSE)" 
                   className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
                   {...field} 
                 />

@@ -49,7 +49,7 @@ export const formatAndDivideNumber = (num: number): string => {
     const formattedNum = (num / 1000000).toFixed(1);
     return `${formattedNum}M`;
   } else if (num >= 1000) {
-    const formattedNum = (num / 1000).toFixed(1);
+    const formattedNum = (num / 10000).toFixed(1);
     return `${formattedNum}K`;
   } else {
     return num.toString();
@@ -57,15 +57,15 @@ export const formatAndDivideNumber = (num: number): string => {
 };
 
 export const getJoinedDate = (date: Date): string => {
-  // Extract the month and year from the Date object
+  const day = date.getDate();
   const month = date.toLocaleString('default', { month: 'long' });
   const year = date.getFullYear();
 
-  // Create the joined date string (e.g., "September 2023")
-  const joinedDate = `${month} ${year}`;
+  const joinedDate = `${day} ${month} ${year}`;
 
   return joinedDate;
 }
+
 
 interface UrlQueryParams {
   params: string;

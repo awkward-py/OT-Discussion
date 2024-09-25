@@ -15,18 +15,14 @@ export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/users.svg",
     route: "/community",
-    label: "Community",
+    label: "Peoples",
   },
   {
     imgURL: "/assets/icons/star.svg",
     route: "/collection",
     label: "Collections",
   },
-  {
-    imgURL: "/assets/icons/suitcase.svg",
-    route: "/jobs",
-    label: "Find Jobs",
-  },
+
   {
     imgURL: "/assets/icons/tag.svg",
     route: "/tags",

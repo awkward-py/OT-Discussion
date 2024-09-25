@@ -21,10 +21,10 @@ const spaceGrotesk = Space_Grotesk({
 })
  
 export const metadata: Metadata = {
-  title: 'DevFlow',
-  description: 'A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.',
+  title: 'OT Discussion',
+  description: 'A OT platform for asking and answering programming questions. Get help, share knowledge, and collaborate with students from around the college campus. ',
   icons: {
-    icon: '/assets/images/site-logo.svg'
+    icon: 'https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png'
   }
 }
  
