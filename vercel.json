@@ -9,8 +9,8 @@
     "node_modules",
     ".git",
     "README.md",
-    "src/**/*.test.js",  // Ignore test files if they're causing issues
-    "src/**/*.spec.js"   // Ignore spec files if they're causing issues
+    "src/**/*.test.js",  
+    "src/**/*.spec.js"   
   ],
   "routes": [
     {
