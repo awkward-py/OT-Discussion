@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { AnswerSchema } from '@/lib/validations'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Editor } from '@tinymce/tinymce-react'
+
 import { useRef, useState } from 'react'
 import { useTheme } from '@/context/ThemeProvider'
 import { Button } from '../ui/button'
@@ -23,7 +23,6 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   const pathname = usePathname();
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmittingAI, setSetIsSubmittingAI] = useState(false);
-  const { mode } = useTheme();
   const editorRef = useRef(null)
   const form = useForm<z.infer<typeof AnswerSchema>>({
     resolver: zodResolver(AnswerSchema),
