@@ -1,0 +1,38 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "outputDirectory": "out",
+  "ignore": [
+    "node_modules",
+    ".git",
+    "README.md",
+    "src/**/*.test.js",  // Ignore test files if they're causing issues
+    "src/**/*.spec.js"   // Ignore spec files if they're causing issues
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/old-path",
+      "destination": "/new-path"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
