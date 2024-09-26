@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic'
 
 export const metadata: Metadata = {
-  title: 'Community | Dev Overflow',
+  title: 'Peoples | OT-Discussion',
 }
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
