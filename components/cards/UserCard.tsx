@@ -31,9 +31,9 @@ const UserCard = async ({ user }: Props) => {
   <h3 className="h3-bold text-dark200_light900 line-clamp-1">
     {user.name}
   </h3>
-  <p className="body-regular text-dark500_light500 mt-2 flex items-center justify-center"> {/* Added flex to align items */}
+  <p className="body-regular text-dark500_light500 mt-2 flex items-center justify-center"> 
     <span className="mr-1">@{user.username}</span>
-    {user.username === 'awkwardpy' && (
+    {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4','user_2mbIauEsU875Pp50WflTE8icx1n'].includes(user.clerkId) && (
       <svg 
         aria-label="Verified" 
         fill="rgb(0, 149, 246)"
