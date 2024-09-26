@@ -64,7 +64,7 @@ const AnswerCard = ({
               {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4','user_2mbIauEsU875Pp50WflTE8icx1n'].includes(author.clerkId) && (
                 <svg
                   aria-label="Verified"
-                  fill="rgb(237 182 8)"
+                  fill="rgb(0, 149, 246)"
                   height="14"
                   role="img"
                   viewBox="0 0 40 40"
