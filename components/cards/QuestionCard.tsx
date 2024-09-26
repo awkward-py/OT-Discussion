@@ -73,7 +73,7 @@ const QuestionCard = ({
           alt="user"
           value={
             <span className="flex items-center">
-              {author.username === 'awkwardpy' ? (
+           {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4','user_2mbIauEsU875Pp50WflTE8icx1n'].includes(author.clerkId) ? (
                 <>
                   {author.name}
                   <svg
