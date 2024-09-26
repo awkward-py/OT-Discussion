@@ -19,7 +19,7 @@ import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import { createQuestion, editQuestion } from '@/lib/actions/question.action';
 import { useRouter, usePathname } from 'next/navigation';
-import { RichTextEditor } from '../ui/textarea';
+
 
 
 interface Props {
