@@ -37,7 +37,7 @@ const Page = async ({ params, searchParams }: any) => {
               alt="profile"
             />
             <p className="paragraph-semibold text-dark300_light700 flex items-center">
-              {result.author.clerkId === 'user_2mWKGv1qqkFoVZiERSgQYsSom2B' ? (
+            {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4','user_2mbIauEsU875Pp50WflTE8icx1n'].includes(result.author.clerkId) ? (
                 <>
                   {result.author.name}
                   <svg
