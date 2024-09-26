@@ -19,6 +19,7 @@ import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import { createQuestion, editQuestion } from '@/lib/actions/question.action';
 import { useRouter, usePathname } from 'next/navigation';
+import { RichTextEditor } from '../ui/textarea';
 
 
 interface Props {
@@ -119,11 +120,13 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           name="title"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-semibold text-dark400_light800">Problem Title <span className="text-primary-500">*</span></FormLabel>
+              <FormLabel className="paragraph-semibold text-dark400_light800">What’s the main topic of your concern? <span className="text-primary-500">*</span></FormLabel>
               <FormControl className="mt-3.5">
                 <Input
                   className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-                  {...field} />
+                  {...field} 
+                   placeholder="Enter your problem title..."
+                  />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
                 Be specific and imagine you&apos;re discussing a problem to another person.
@@ -140,11 +143,14 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Detailed explanation of your problem <span className="text-primary-500">*</span>
               </FormLabel>
+              
               <FormControl className="mt-3.5">
+                
                 <textarea
                   className="no-focus paragraph-regular background-light900_dark300 light-border-1 text-dark300_light700 min-h-[150px] border p-3 rounded-lg resize-none"
                   {...field}
-                  rows={8} // This sets the initial height
+                  rows={8} 
+                   placeholder="Please explain your problem here.."
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
