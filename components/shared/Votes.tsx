@@ -75,7 +75,7 @@ const Votes = ({
       }
 
       return toast({
-        title: `Upvote ${!hasupVoted ? 'Successful' : 'Removed'}`,
+        title: `Star ${!hasupVoted ? 'Added' : 'Removed'}`,
         variant: !hasupVoted ? 'default' : 'destructive'
       })
     }
@@ -100,7 +100,7 @@ const Votes = ({
       }
 
       return toast({
-        title: `Downvote ${!hasupVoted ? 'Successful' : 'Removed'}`,
+        title: `Unfavored ${!hasupVoted ? 'Added' : 'Removed'}`,
         variant: !hasupVoted ? 'default' : 'destructive'
       })
       
