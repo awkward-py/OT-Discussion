@@ -21,7 +21,6 @@ import { createQuestion, editQuestion } from '@/lib/actions/question.action';
 import { useRouter, usePathname } from 'next/navigation';
 
 
-
 interface Props {
   type?: string;
   mongoUserId: string;
