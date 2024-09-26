@@ -61,7 +61,7 @@ const AnswerCard = ({
           value={
             <>
               {author.name}
-              {author.username === "awkwardpy" && (
+              {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4','user_2mbIauEsU875Pp50WflTE8icx1n'].includes(author.clerkId) && (
                 <svg
                   aria-label="Verified"
                   fill="rgb(237 182 8)"
@@ -69,7 +69,7 @@ const AnswerCard = ({
                   role="img"
                   viewBox="0 0 40 40"
                   width="14"
-                  className="ml-1" // Adjust margin as necessary
+                  className="ml-1" 
                 >
                   <title>IT-Verified</title>
                   <path
