@@ -33,7 +33,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
           <div className="mt-3">
           <h2 className="h2-bold text-dark100_light900 flex items-center">
   {userInfo.user.name}
-  {userInfo.user.username === 'awkwardpy' && (
+  {['user_2mWKGv1qqkFoVZiERSgQYsSom2B', 'user_2mbIauEsU875Pp50WflTE8icx1n', 'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4'].includes(userInfo.user.clerkId) && (
     <svg 
       aria-label="Verified" 
       fill="rgb(0, 149, 246)"
