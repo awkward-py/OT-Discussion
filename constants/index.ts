@@ -44,26 +44,26 @@ export const BADGE_CRITERIA = {
   QUESTION_COUNT: {
     BRONZE: 10,
     SILVER: 50,
-    GOLD: 100,
+    GOLD: 50,
   },
   ANSWER_COUNT: {
     BRONZE: 10,
-    SILVER: 50,
-    GOLD: 100,
+    SILVER: 30,
+    GOLD: 50,
   },
   QUESTION_UPVOTES: {
     BRONZE: 10,
-    SILVER: 50,
-    GOLD: 100,
+    SILVER: 20,
+    GOLD: 30,
   },
   ANSWER_UPVOTES: {
     BRONZE: 10,
-    SILVER: 50,
-    GOLD: 100,
+    SILVER: 20,
+    GOLD: 30,
   },
   TOTAL_VIEWS: {
-    BRONZE: 1000,
-    SILVER: 10000,
-    GOLD: 100000,
+    BRONZE: 100,
+    SILVER: 200,
+    GOLD: 500,
   },
 };
