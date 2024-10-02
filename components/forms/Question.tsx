@@ -19,7 +19,7 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";  // <-- Make sure this is at the top
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -140,64 +140,60 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           )}
         />
 
-<FormField
-  control={form.control}
-  name="explanation"
-  render={({ field }) => (
-    <FormItem className="flex w-full flex-col gap-3">
-      <FormLabel className="paragraph-semibold text-dark400_light800">
-        Detailed explanation of your problem <span className="text-primary-500">*</span>
-      </FormLabel>
+        <FormField
+          control={form.control}
+          name="explanation"
+          render={({ field }) => (
+            <FormItem className="flex w-full flex-col gap-3">
+              <FormLabel className="paragraph-semibold text-dark400_light800">
+                Detailed explanation of your problem <span className="text-primary-500">*</span>
+              </FormLabel>
 
-      <FormControl className="mt-3.5 ">
-        <div className="custom-quill-wrapper ">
-          <ReactQuill 
-            value={richTextValue}
-            onChange={setRichTextValue}
-            modules={{
-              toolbar: [
-                [{ header: [1, 2, false] }],
-                ["bold", "italic", "underline", "strike"],
-                [{ list: "ordered" }, { list: "bullet" }],
-                ["link", "code-block"],
-                [{ indent: "-1" }, { indent: "+1" }],
-                [{ align: [] }],
-                ["clean"],
-              ],
-            }}
-            formats={[
-              "header",
-              "bold",
-              "italic",
-              "underline",
-              "strike",
-              "list",
-              "bullet",
-              "link",
-              "code-block",
-              "indent",
-              "align",
-            ]}
-            placeholder="Please explain your problem here..."
-            className="h-[200px]" 
-          />
-        </div>
-      </FormControl>
+              <FormControl className="mt-3.5 ">
+                <div className="custom-quill-wrapper ">
+                  <ReactQuill
+                    value={richTextValue}
+                    onChange={setRichTextValue}
+                    modules={{
+                      toolbar: [
+                        [{ header: [1, 2, false] }],
+                        ["bold", "italic", "underline", "strike"],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["link", "code-block"],
+                        [{ indent: "-1" }, { indent: "+1" }],
+                        [{ align: [] }],
+                        ["clean"],
+                      ],
+                    }}
+                    formats={[
+                      "header",
+                      "bold",
+                      "italic",
+                      "underline",
+                      "strike",
+                      "list",
+                      "bullet",
+                      "link",
+                      "code-block",
+                      "indent",
+                      "align",
+                    ]}
+                    placeholder="Please explain your problem here..."
+                    className="h-[200px]"
+                  />
+                </div>
+              </FormControl>
 
+              <div className="mt-4 mb-6">
+                <FormDescription className="body-regular text-light-500"></FormDescription>
+              </div>
 
-      <div className="mt-4 mb-6">
-        <FormDescription className="body-regular text-light-500">
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
 
-        </FormDescription>
-      </div>
-
-      <FormMessage className="text-red-500" />
-    </FormItem>
-  )}
-/>
-
-<FormField 
-
+        <FormField
           control={form.control}
           name="tags"
           render={({ field }) => (
@@ -220,7 +216,9 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                         <Badge
                           key={tag}
                           className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize"
-                          onClick={() => (type !== "Edit" ? handleTagRemove(tag, field) : () => {})}
+                          onClick={() =>
+                            type !== "Edit" ? handleTagRemove(tag, field) : () => {}
+                          }
                         >
                           {tag}
                           {type !== "Edit" && (
@@ -250,7 +248,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           {isSubmitting ? (
             <>{type === "Edit" ? "Editing..." : "Posting..."}</>
           ) : (
-            <>{type === "Edit" ? "Edit Discussion" : "Create Discussion"}</>
+            <>{type === "Edit" ? "Edit" : "Post"}</>
           )}
         </Button>
       </form>
