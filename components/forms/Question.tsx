@@ -1,5 +1,4 @@
 "use client";
-import dynamic from "next/dynamic";  // <-- Move this import to the top
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -20,11 +19,13 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
+import dynamic from "next/dynamic";  // <-- This import should be at the top
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
 
+// Your component and the rest of your logic
 interface Props {
   type?: string;
   mongoUserId: string;
