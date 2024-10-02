@@ -47,7 +47,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
 
       if (editorRef.current) {
         const editor = editorRef.current as any;
-        editor.setContent('');
+        editor.setContent(''); // Clear content after submission
       }
     } catch (error) {
       console.log(error);
@@ -94,9 +94,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
           onClick={generateAIAnswer}
         >
           {isSubmittingAI ? (
-            <>
-              Generating...
-            </>
+            <>Generating...</>
           ) : (
             <>
               <Image
@@ -128,7 +126,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
                     onChange={field.onChange}
                     ref={editorRef}
                     placeholder="Write your detailed answer here..."
-                    className="react-quill-editor"
+                    className="react-quill-editor h-[300px]"  // Updated height here
                     modules={{
                       toolbar: [
                         [{ header: [1, 2, false] }],
@@ -153,7 +151,6 @@ const Answer = ({ question, questionId, authorId }: Props) => {
                       "indent",
                       "align",
                     ]}
-                    className="h-[100px]" 
                   />
                 </FormControl>
                 <FormMessage className="text-red-500" />
