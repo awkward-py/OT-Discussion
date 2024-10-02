@@ -62,7 +62,7 @@ const Page = async ({ params, searchParams }: any) => {
   ) : (
     result.author.name
   )}
-  {result.author.clerkId === "user_2mWKGv1qqkFoVZiERSgQYsSom2B" && (
+  {result.author.clerkId === "user_2msC45rbo2Xcfzx3Qs5aa5Z9UOe" && (
     <svg
       viewBox="-2 2 22 22"
       width="17"
