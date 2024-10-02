@@ -11,6 +11,8 @@ import { Button } from '../ui/button'
 import Image from 'next/image'
 import { createAnswer } from '@/lib/actions/answer.action'
 import { usePathname } from 'next/navigation'
+import ReactQuill from 'react-quill' // Importing ReactQuill for rich text editing
+import 'react-quill/dist/quill.snow.css'; // Importing Quill's default style
 
 interface Props {
   question: string;
@@ -43,9 +45,8 @@ const Answer = ({ question, questionId, authorId }: Props) => {
 
       form.reset();
 
-      if(editorRef.current) {
+      if (editorRef.current) {
         const editor = editorRef.current as any;
-
         editor.setContent('');
       }
     } catch (error) {
@@ -56,12 +57,12 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   }
 
   const generateAIAnswer = async () => {
-    if(!authorId) return;
+    if (!authorId) return;
 
     setSetIsSubmittingAI(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/chatgpt`, { 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/chatgpt`, {
         method: 'POST',
         body: JSON.stringify({ question })
       })
@@ -69,10 +70,9 @@ const Answer = ({ question, questionId, authorId }: Props) => {
       const aiAnswer = await response.json();
 
       // Convert plain text to HTML format
-
       const formattedAnswer = aiAnswer.reply.replace(/\n/g, '<br />');
 
-      if(editorRef.current) {
+      if (editorRef.current) {
         const editor = editorRef.current as any;
         editor.setContent(formattedAnswer);
       }
@@ -91,15 +91,15 @@ const Answer = ({ question, questionId, authorId }: Props) => {
         <h4 className="paragraph-semibold text-dark400_light800">Write your answer here</h4>
 
         <Button className="btn light-border-2 gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
-        onClick={generateAIAnswer}
+          onClick={generateAIAnswer}
         >
           {isSubmittingAI ? (
             <>
-            Generating...
+              Generating...
             </>
           ) : (
             <>
-              <Image 
+              <Image
                 src="/assets/icons/stars.svg"
                 alt="star"
                 width={12}
@@ -107,8 +107,8 @@ const Answer = ({ question, questionId, authorId }: Props) => {
                 className="object-contain"
               />
               Generate AI Answer
-              </>
-            )}
+            </>
+          )}
         </Button>
       </div>
 
@@ -123,25 +123,52 @@ const Answer = ({ question, questionId, authorId }: Props) => {
             render={({ field }) => (
               <FormItem className="flex w-full flex-col gap-3">
                 <FormControl className="mt-3.5">
-                <textarea
-                  className="no-focus paragraph-regular background-light900_dark300 light-border-1 text-dark300_light700 min-h-[150px] border p-3 rounded-lg resize-none"
-                  {...field}
-                  rows={6} // This sets the initial height
-                />
+                  <ReactQuill
+                    value={field.value}
+                    onChange={field.onChange}
+                    ref={editorRef}
+                    placeholder="Write your detailed answer here..."
+                    className="react-quill-editor"
+                    modules={{
+                      toolbar: [
+                        [{ header: [1, 2, false] }],
+                        ["bold", "italic", "underline", "strike"],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["link", "code-block"],
+                        [{ indent: "-1" }, { indent: "+1" }],
+                        [{ align: [] }],
+                        ["clean"],
+                      ],
+                    }}
+                    formats={[
+                      "header",
+                      "bold",
+                      "italic",
+                      "underline",
+                      "strike",
+                      "list",
+                      "bullet",
+                      "link",
+                      "code-block",
+                      "indent",
+                      "align",
+                    ]}
+                    className="h-[100px]" 
+                  />
                 </FormControl>
                 <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
 
-          <div className="flex justify-end">
-              <Button
-                type="submit"
-                className="primary-gradient w-fit text-white"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </Button>
+          <div className="flex justify-end mt-10 sm:mt-5">
+            <Button
+              type="submit"
+              className="primary-gradient w-fit text-white"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit'}
+            </Button>
           </div>
         </form>
       </Form>
