@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "standard", "plugin:tailwindcss/recommended", "prettier"]
+  "extends": [
+    "next/core-web-vitals",
+    "standard",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "tailwindcss",
+    "prettier"
+  ],
+  "rules": {
+    "tailwindcss/no-unknown-classes": "error",
+    "prettier/prettier": ["error", { "singleQuote": true }]
+  }
 }
