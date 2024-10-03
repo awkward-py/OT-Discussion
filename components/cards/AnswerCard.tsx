@@ -95,7 +95,7 @@ const AnswerCard = ({
             imgUrl="/assets/icons/star-line.svg"
             alt="like icon"
             value={formatAndDivideNumber(upvotes)}
-            title=" Votes"
+            title=" Stars"
             textStyles="small-medium text-dark400_light800"
           />
         </div>
