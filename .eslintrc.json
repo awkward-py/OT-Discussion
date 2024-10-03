@@ -1,31 +1,12 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "standard",
     "plugin:tailwindcss/recommended",
-    "plugin:prettier/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "tailwindcss",
-    "prettier"
-  ],
+  "plugins": ["tailwindcss", "prettier"],
   "rules": {
     "tailwindcss/no-unknown-classes": "error",
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "semi": false,  // Optional: to avoid semicolons if you prefer
-        "trailingComma": "es5", // Optional: if you want trailing commas in object literals
-        "printWidth": 80, // Optional: set max line length
-        "tabWidth": 2     // Optional: set tab width
-      }
-    ]
-  },
-  "settings": {
-    "tailwindcss": {
-      "callees": ["classnames"]
-    }
+    "prettier/prettier": ["error", { "singleQuote": true, "semi": false }]
   }
 }
