@@ -50,7 +50,6 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     },
   });
 
-
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
