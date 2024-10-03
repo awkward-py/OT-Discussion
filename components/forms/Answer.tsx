@@ -84,7 +84,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
       setSetIsSubmittingAI(false);
     }
   }
-
+  
   return (
     <div>
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
