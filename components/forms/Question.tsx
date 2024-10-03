@@ -22,11 +22,11 @@ import { useRouter, usePathname } from "next/navigation";
 
 // Disable ESLint for the dynamic import rule
 /* eslint-disable-next-line import/first */
-import dynamic from "next/dynamic";  // Dynamic import for ReactQuill
+import dynamic from "next/dynamic"; // Dynamic import for ReactQuill
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";  // Import Quill styles
+import "react-quill/dist/quill.snow.css"; // Import Quill styles
 
 interface Props {
   type?: string;
@@ -40,7 +40,8 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const parsedQuestionDetails = questionDetails && JSON.parse(questionDetails || "");
+  const parsedQuestionDetails =
+    questionDetails && JSON.parse(questionDetails || "");
 
   const groupedTags = parsedQuestionDetails?.tags.map((tag: any) => tag.name);
 
@@ -84,7 +85,10 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     }
   }
 
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
+  const handleInputKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    field: any,
+  ) => {
     if (e.key === "Enter" && field.name === "tags") {
       e.preventDefault();
       const tagInput = e.target as HTMLInputElement;
@@ -116,7 +120,10 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-10">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex w-full flex-col gap-10"
+      >
         <FormField
           control={form.control}
           name="title"
@@ -134,7 +141,8 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Be specific and imagine you&apos;re discussing a problem to another person.
+                Be specific and imagine you&apos;re discussing a problem to
+                another person.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
@@ -147,7 +155,8 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
               <FormLabel className="paragraph-semibold text-dark400_light800">
-                Detailed explanation of your problem <span className="text-primary-500">*</span>
+                Detailed explanation of your problem{" "}
+                <span className="text-primary-500">*</span>
               </FormLabel>
 
               <FormControl className="mt-3.5 ">
@@ -218,7 +227,9 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                           key={tag}
                           className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize"
                           onClick={() =>
-                            type !== "Edit" ? handleTagRemove(tag, field) : () => {}
+                            type !== "Edit"
+                              ? handleTagRemove(tag, field)
+                              : () => {}
                           }
                         >
                           {tag}
@@ -238,14 +249,18 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                 </>
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Add up to 3 tags to describe what your problem is about. You need to press enter to
-                add a tag.
+                Add up to 3 tags to describe what your problem is about. You
+                need to press enter to add a tag.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
-        <Button type="submit" className="primary-gradient w-fit !text-light-900" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          className="primary-gradient w-fit !text-light-900"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? (
             <>{type === "Edit" ? "Editing..." : "Posting..."}</>
           ) : (

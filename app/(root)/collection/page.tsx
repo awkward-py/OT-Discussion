@@ -6,12 +6,12 @@ import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { QuestionFilters } from "@/constants/filters";
 import { getSavedQuestions } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
-import { auth } from '@clerk/nextjs'
+import { auth } from "@clerk/nextjs";
 
 export default async function Home({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
 
-  if(!userId) return null;
+  if (!userId) return null;
 
   const result = await getSavedQuestions({
     clerkId: userId,
@@ -22,10 +22,10 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">Saved Questions</h1> 
+      <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
 
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearchbar 
+        <LocalSearchbar
           route="/"
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
@@ -40,9 +40,9 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       </div>
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {result.questions.length > 0 ?
+        {result.questions.length > 0 ? (
           result.questions.map((question: any) => (
-            <QuestionCard 
+            <QuestionCard
               key={question._id}
               _id={question._id}
               title={question.title}
@@ -54,20 +54,22 @@ export default async function Home({ searchParams }: SearchParamsProps) {
               createdAt={question.createdAt}
             />
           ))
-          : <NoResult 
+        ) : (
+          <NoResult
             title="No Saved Questions or Discussions in Your Collection"
             description="No saved questions yet! Keep track of your favorites by saving them into your collection. Your insights deserve to be remembered—start building your collection today! 💡"
             link="/ask-question"
             linkTitle="Ask a Question"
-          />}
+          />
+        )}
       </div>
 
       <div className="mt-10">
-        <Pagination 
+        <Pagination
           pageNumber={searchParams?.page ? +searchParams.page : 1}
           isNext={result.isNext}
         />
       </div>
     </>
-  )
+  );
 }

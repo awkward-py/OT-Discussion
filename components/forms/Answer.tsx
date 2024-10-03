@@ -1,18 +1,24 @@
-"use client"
+"use client";
 
-import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form'
-import { useForm } from 'react-hook-form'
-import { AnswerSchema } from '@/lib/validations'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "../ui/form";
+import { useForm } from "react-hook-form";
+import { AnswerSchema } from "@/lib/validations";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useRef, useState } from 'react'
-import { Button } from '../ui/button'
-import Image from 'next/image'
-import { createAnswer } from '@/lib/actions/answer.action'
-import { usePathname } from 'next/navigation'
-import ReactQuill from 'react-quill' // Importing ReactQuill for rich text editing
-import 'react-quill/dist/quill.snow.css'; // Importing Quill's default style
+import { useRef, useState } from "react";
+import { Button } from "../ui/button";
+import Image from "next/image";
+import { createAnswer } from "@/lib/actions/answer.action";
+import { usePathname } from "next/navigation";
+import ReactQuill from "react-quill"; // Importing ReactQuill for rich text editing
+import "react-quill/dist/quill.snow.css"; // Importing Quill's default style
 
 interface Props {
   question: string;
@@ -22,15 +28,15 @@ interface Props {
 
 const Answer = ({ question, questionId, authorId }: Props) => {
   const pathname = usePathname();
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmittingAI, setSetIsSubmittingAI] = useState(false);
-  const editorRef = useRef(null)
+  const editorRef = useRef(null);
   const form = useForm<z.infer<typeof AnswerSchema>>({
     resolver: zodResolver(AnswerSchema),
     defaultValues: {
-      answer: ''
-    }
-  })
+      answer: "",
+    },
+  });
 
   const handleCreateAnswer = async (values: z.infer<typeof AnswerSchema>) => {
     setIsSubmitting(true);
@@ -47,14 +53,14 @@ const Answer = ({ question, questionId, authorId }: Props) => {
 
       if (editorRef.current) {
         const editor = editorRef.current as any;
-        editor.setContent(''); // Clear content after submission
+        editor.setContent(""); // Clear content after submission
       }
     } catch (error) {
       console.log(error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const generateAIAnswer = async () => {
     if (!authorId) return;
@@ -62,15 +68,18 @@ const Answer = ({ question, questionId, authorId }: Props) => {
     setSetIsSubmittingAI(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/chatgpt`, {
-        method: 'POST',
-        body: JSON.stringify({ question })
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/chatgpt`,
+        {
+          method: "POST",
+          body: JSON.stringify({ question }),
+        },
+      );
 
       const aiAnswer = await response.json();
 
       // Convert plain text to HTML format
-      const formattedAnswer = aiAnswer.reply.replace(/\n/g, '<br />');
+      const formattedAnswer = aiAnswer.reply.replace(/\n/g, "<br />");
 
       if (editorRef.current) {
         const editor = editorRef.current as any;
@@ -83,14 +92,17 @@ const Answer = ({ question, questionId, authorId }: Props) => {
     } finally {
       setSetIsSubmittingAI(false);
     }
-  }
+  };
 
   return (
     <div>
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
-        <h4 className="paragraph-semibold text-dark400_light800">Write your answer here</h4>
+        <h4 className="paragraph-semibold text-dark400_light800">
+          Write your answer here
+        </h4>
 
-        <Button className="btn light-border-2 gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
+        <Button
+          className="btn light-border-2 gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
           onClick={generateAIAnswer}
         >
           {isSubmittingAI ? (
@@ -126,7 +138,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
                     onChange={field.onChange}
                     ref={editorRef}
                     placeholder="Write your detailed answer here..."
-                    className="react-quill-editor h-[300px]"  // Updated height here
+                    className="react-quill-editor h-[300px]" // Updated height here
                     modules={{
                       toolbar: [
                         [{ header: [1, 2, false] }],
@@ -164,13 +176,13 @@ const Answer = ({ question, questionId, authorId }: Props) => {
               className="primary-gradient w-fit text-white"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </Button>
           </div>
         </form>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default Answer
+export default Answer;

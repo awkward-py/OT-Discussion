@@ -6,10 +6,7 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "plugins": [
-    "tailwindcss",
-    "prettier"
-  ],
+  "plugins": ["tailwindcss", "prettier"],
   "rules": {
     "tailwindcss/no-unknown-classes": "error",
     "prettier/prettier": ["error", { "singleQuote": true }]
