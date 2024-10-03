@@ -19,10 +19,7 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
-
-// Disable ESLint for the dynamic import rule
-/* eslint-disable-next-line import/first */
-import dynamic from "next/dynamic"; // Dynamic import for ReactQuill
+import dynamic from "next/dynamic";
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -40,11 +37,11 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const parsedQuestionDetails =
-    questionDetails && JSON.parse(questionDetails || "");
+  const parsedQuestionDetails = questionDetails && JSON.parse(questionDetails || "");
 
   const groupedTags = parsedQuestionDetails?.tags.map((tag: any) => tag.name);
 
+  // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
@@ -54,7 +51,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     },
   });
 
-  // Submit handler
+  // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
@@ -85,12 +82,10 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     }
   }
 
-  const handleInputKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    field: any,
-  ) => {
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
     if (e.key === "Enter" && field.name === "tags") {
       e.preventDefault();
+
       const tagInput = e.target as HTMLInputElement;
       const tagValue = tagInput.value.trim();
 
@@ -120,10 +115,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-10"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-10">
         <FormField
           control={form.control}
           name="title"
@@ -141,69 +133,71 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Be specific and imagine you&apos;re discussing a problem to
-                another person.
+                Be specific and imagine you&apos;re discussing a problem to another person.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="explanation"
-          render={({ field }) => (
-            <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Detailed explanation of your problem{" "}
-                <span className="text-primary-500">*</span>
-              </FormLabel>
+<FormField
+  control={form.control}
+  name="explanation"
+  render={({ field }) => (
+    <FormItem className="flex w-full flex-col gap-3">
+      <FormLabel className="paragraph-semibold text-dark400_light800">
+        Detailed explanation of your problem <span className="text-primary-500">*</span>
+      </FormLabel>
 
-              <FormControl className="mt-3.5 ">
-                <div className="custom-quill-wrapper ">
-                  <ReactQuill
-                    value={richTextValue}
-                    onChange={setRichTextValue}
-                    modules={{
-                      toolbar: [
-                        [{ header: [1, 2, false] }],
-                        ["bold", "italic", "underline", "strike"],
-                        [{ list: "ordered" }, { list: "bullet" }],
-                        ["link", "code-block"],
-                        [{ indent: "-1" }, { indent: "+1" }],
-                        [{ align: [] }],
-                        ["clean"],
-                      ],
-                    }}
-                    formats={[
-                      "header",
-                      "bold",
-                      "italic",
-                      "underline",
-                      "strike",
-                      "list",
-                      "bullet",
-                      "link",
-                      "code-block",
-                      "indent",
-                      "align",
-                    ]}
-                    placeholder="Please explain your problem here..."
-                    className="h-[200px]"
-                  />
-                </div>
-              </FormControl>
+      <FormControl className="mt-3.5 ">
+        <div className="custom-quill-wrapper ">
+          <ReactQuill 
+            value={richTextValue}
+            onChange={setRichTextValue}
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, false] }],
+                ["bold", "italic", "underline", "strike"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["link", "code-block"],
+                [{ indent: "-1" }, { indent: "+1" }],
+                [{ align: [] }],
+                ["clean"],
+              ],
+            }}
+            formats={[
+              "header",
+              "bold",
+              "italic",
+              "underline",
+              "strike",
+              "list",
+              "bullet",
+              "link",
+              "code-block",
+              "indent",
+              "align",
+            ]}
+            placeholder="Please explain your problem here..."
+            className="h-[200px]" 
+          />
+        </div>
+      </FormControl>
 
-              <div className="mt-4 mb-6">
-                <FormDescription className="body-regular text-light-500"></FormDescription>
-              </div>
 
-              <FormMessage className="text-red-500" />
-            </FormItem>
-          )}
-        />
+      <div className="mt-4 mb-6">
+        <FormDescription className="body-regular text-light-500">
 
-        <FormField
+        </FormDescription>
+      </div>
+
+      <FormMessage className="text-red-500" />
+    </FormItem>
+  )}
+/>
+
+<FormField 
+
           control={form.control}
           name="tags"
           render={({ field }) => (
@@ -226,11 +220,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                         <Badge
                           key={tag}
                           className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize"
-                          onClick={() =>
-                            type !== "Edit"
-                              ? handleTagRemove(tag, field)
-                              : () => {}
-                          }
+                          onClick={() => (type !== "Edit" ? handleTagRemove(tag, field) : () => {})}
                         >
                           {tag}
                           {type !== "Edit" && (
@@ -249,22 +239,18 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                 </>
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Add up to 3 tags to describe what your problem is about. You
-                need to press enter to add a tag.
+                Add up to 3 tags to describe what your problem is about. You need to press enter to
+                add a tag.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          className="primary-gradient w-fit !text-light-900"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" className="primary-gradient w-fit !text-light-900" disabled={isSubmitting}>
           {isSubmitting ? (
             <>{type === "Edit" ? "Editing..." : "Posting..."}</>
           ) : (
-            <>{type === "Edit" ? "Edit" : "Post"}</>
+            <>{type === "Edit" ? "Edit Discussion" : "Create Discussion"}</>
           )}
         </Button>
       </form>

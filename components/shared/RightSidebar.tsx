@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import RenderTag from "./RenderTag";
-import { getHotQuestions } from "@/lib/actions/question.action";
-import { getTopPopularTags } from "@/lib/actions/tag.actions";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react'
+import RenderTag from './RenderTag';
+import { getHotQuestions } from '@/lib/actions/question.action';
+import { getTopPopularTags } from '@/lib/actions/tag.actions';
 
 const RightSidebar = async () => {
   const hotQuestions = await getHotQuestions();
@@ -18,12 +18,10 @@ const RightSidebar = async () => {
             <Link
               href={`/question/${question._id}`}
               key={question._id}
-              className="flex cursor-pointer items-center justify-between gap-7"
+              className='flex cursor-pointer items-center justify-between gap-7'
             >
-              <p className="body-medium text-dark500_light700">
-                {question.title}
-              </p>
-              <Image
+              <p className="body-medium text-dark500_light700">{question.title}</p>
+              <Image 
                 src="/assets/icons/chevron-right.svg"
                 alt="chevron right"
                 width={20}
@@ -35,21 +33,21 @@ const RightSidebar = async () => {
         </div>
       </div>
       <div className="mt-16">
-        <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
+      <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
         <div className="mt-7 flex flex-col gap-4">
-          {popularTags.map((tag) => (
-            <RenderTag
-              key={tag._id}
-              _id={tag._id}
-              name={tag.name}
-              totalQuestions={tag.numberOfQuestions}
-              showCount
-            />
-          ))}
+            {popularTags.map((tag) => (
+              <RenderTag 
+                key={tag._id}
+                _id={tag._id}
+                name={tag.name}
+                totalQuestions={tag.numberOfQuestions}
+                showCount
+              />
+            ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default RightSidebar;
+export default RightSidebar

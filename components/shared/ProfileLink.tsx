@@ -13,20 +13,16 @@ const ProfileLink = ({ imgUrl, href, title }: ProfileLinkProps) => {
       <Image src={imgUrl} alt="icon" width={15} height={15} />
 
       {href ? (
-        <Link
-          href={href}
-          target="_blank"
-          className="paragraph-medium text-blue-500 text-[14px]"
-        >
+        <Link href={href} target="_blank" className="paragraph-medium text-blue-500 text-[14px]">
           {title}
-        </Link>
+        </Link> 
       ) : (
         <p className="paragraph-medium text-dark400_light700 text-[13px] text-stone-600">
           {title}
         </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProfileLink;
+export default ProfileLink

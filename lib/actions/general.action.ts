@@ -1,4 +1,4 @@
-"use server";
+"use server"
 
 import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
@@ -19,15 +19,15 @@ export async function globalSearch(params: SearchParams) {
     let results = [];
 
     const modelsAndTypes = [
-      { model: Question, searchField: "title", type: "question" },
-      { model: User, searchField: "name", type: "user" },
-      { model: Answer, searchField: "content", type: "answer" },
-      { model: Tag, searchField: "name", type: "tag" },
-    ];
+      { model: Question, searchField: 'title', type: 'question'},
+      { model: User, searchField: 'name', type: 'user'},
+      { model: Answer, searchField: 'content', type: 'answer'},
+      { model: Tag, searchField: 'name', type: 'tag'},
+    ]
 
     const typeLower = type?.toLowerCase();
 
-    if (!typeLower || !SearchableTypes.includes(typeLower)) {
+    if(!typeLower || !SearchableTypes.includes(typeLower)) {
       // SEARCH ACROSS EVERYTHING
 
       for (const { model, searchField, type } of modelsAndTypes) {
@@ -35,27 +35,25 @@ export async function globalSearch(params: SearchParams) {
           .find({ [searchField]: regexQuery })
           .limit(2);
 
-        results.push(
-          ...queryResults.map((item) => ({
-            title:
-              type === "answer"
-                ? `Answers containing ${query}`
-                : item[searchField],
-            type,
-            id:
-              type === "user"
+          results.push(
+            ...queryResults.map((item) => ({
+              title: type === 'answer' 
+              ? `Answers containing ${query}` 
+              : item[searchField],
+              type,
+              id: type === 'user'
                 ? item.clerkid
-                : type === "answer"
-                ? item.question
-                : item._id,
-          })),
-        );
+                : type==='answer'
+                  ? item.question 
+                  : item._id
+              }))
+          )
       }
     } else {
       // SEARCH IN THE SPECIFIED MODEL TYPE
       const modelInfo = modelsAndTypes.find((item) => item.type === type);
 
-      console.log({ modelInfo, type });
+      console.log({modelInfo, type});
       if (!modelInfo) {
         throw new Error("Invalid search type");
       }
