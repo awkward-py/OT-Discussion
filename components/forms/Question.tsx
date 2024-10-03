@@ -23,7 +23,7 @@ import dynamic from "next/dynamic";
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import "react-quill/dist/quill.snow.css"; 
 
 interface Props {
   type?: string;
@@ -41,7 +41,6 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
 
   const groupedTags = parsedQuestionDetails?.tags.map((tag: any) => tag.name);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
