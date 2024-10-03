@@ -19,13 +19,15 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
-import dynamic from "next/dynamic";  // <-- This import should be at the top
+
+// Disable ESLint for the dynamic import rule
+/* eslint-disable-next-line import/first */
+import dynamic from "next/dynamic";  // Dynamic import for ReactQuill
 
 // Dynamically load ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import "react-quill/dist/quill.snow.css";  // Import Quill styles
 
-// Your component and the rest of your logic
 interface Props {
   type?: string;
   mongoUserId: string;
@@ -51,7 +53,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     },
   });
 
-  // 2. Define a submit handler.
+  // Submit handler
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
@@ -85,7 +87,6 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
     if (e.key === "Enter" && field.name === "tags") {
       e.preventDefault();
-
       const tagInput = e.target as HTMLInputElement;
       const tagValue = tagInput.value.trim();
 
