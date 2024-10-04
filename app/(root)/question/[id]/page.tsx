@@ -39,7 +39,8 @@ const Page = async ({ params, searchParams }: any) => {
            <p className="paragraph-semibold text-dark300_light700 flex items-center">
   {[ 
     'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4',
-    'user_2mbIauEsU875Pp50WflTE8icx1n'
+    'user_2mbIauEsU875Pp50WflTE8icx1n',
+              'user_2mxdwEQX81YYzm0dEZZOTkZAEQy'
   ].includes(result.author.clerkId) ? (
     <>
       {result.author.name}
