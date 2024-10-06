@@ -53,27 +53,27 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-     <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
-  <h1 className="text-2xl font-bold text-gradient">
-    {name?.name ? `${name.name.split(' ')[0]}, what will you discuss today?` : 'Sign in to join the discussion!'}
-  </h1>
+      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+        <h1 className="text-2xl font-bold text-gradient">
+          {name?.name ? `${name.name.split(' ')[0]}, what will you discuss today?` : 'Sign in to join the discussion!'}
+        </h1>
+      </div>
 
-  {userId ? (
-    <Link href="/ask-question" className="flex justify-end max-sm:w-full">
-      <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-        Open a Problem
-      </Button>
-    </Link>
-  ) : (
-    <Link href="/sign-in" className="flex justify-end max-sm:w-full">
-  <Button className="bg-blue-500 hover:bg-blue-600 min-h-[46px] px-4 py-3 text-white">
-    <span className="text-white">Log In</span>
-  </Button>
-</Link>
-
-  )}
-</div>
-
+      <div className="flex justify-end max-sm:w-full mb-4"> {/* Added margin bottom for spacing */}
+        {userId ? (
+          <Link href="/ask-question">
+            <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+              Open a Problem
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/sign-in">
+            <Button className="bg-blue-500 hover:bg-blue-600 min-h-[46px] px-4 py-3 text-white">
+              <span className="text-white">Log In</span>
+            </Button>
+          </Link>
+        )}
+      </div>
 
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearchbar
@@ -94,7 +94,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {result.questions.length > 0 ?
+        {result.questions.length > 0 ? (
           result.questions.map((question) => (
             <QuestionCard
               key={question._id}
@@ -108,12 +108,14 @@ export default async function Home({ searchParams }: SearchParamsProps) {
               createdAt={question.createdAt}
             />
           ))
-          : <NoResult
+        ) : (
+          <NoResult
             title="There’s no problems to show"
             description="Be the first to start a discussion! Got issues with academics, tech, or campus life? Post your problem and join the discussion to get the support you need! 🚀"
             link="/ask-question"
             linkTitle="Open a Problem"
-          />}
+          />
+        )}
       </div>
 
       <div className="mt-10">
