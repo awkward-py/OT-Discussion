@@ -12,8 +12,14 @@ import ProfileLink from '@/components/shared/ProfileLink'
 import Stats from '@/components/shared/Stats'
 import QuestionTab from '@/components/shared/QuestionTab'
 import AnswersTab from '@/components/shared/AnswersTab'
+import { redirect } from 'next/navigation';
 
 const Page = async ({ params, searchParams }: URLProps) => {
+
+   const { userId } = auth();
+
+  if (!userId) redirect('/sign-in');
+  
   const { userId: clerkId } = auth();
   const userInfo = await getUserInfo({ userId: params.id })
 
