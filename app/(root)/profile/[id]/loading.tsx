@@ -6,6 +6,8 @@ const Loading = () => {
       <div className='flex flex-col items-start gap-4 lg:flex-row'>
         <Skeleton className='h-36 w-36 rounded-full' />
 
+        <h1 className="h1-bold text-dark100_light900">Hang Tight... We load your profile just for you.</h1>
+
         <div className='mt-3'>
           <Skeleton className='h-7 w-28' />
           <Skeleton className='mt-3 h-7 w-20' />
