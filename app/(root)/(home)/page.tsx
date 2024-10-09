@@ -15,7 +15,7 @@ import { auth } from "@clerk/nextjs";
 import { getUserById } from "@/lib/actions/user.action";
 
 export const metadata: Metadata = {
-  title: 'Home | OT Discussion',
+  title: 'OT Discussion',
 }
 
 export default async function Home({ searchParams }: SearchParamsProps) {
