@@ -73,6 +73,7 @@ const { userId } = auth();
   )}
            
                          {['user_2msC45rbo2Xcfzx3Qs5aa5Z9UOe', 'user_2n5xdgqdECnSabJtgQjgvyWL2Ch'].includes(result.author.clerkId) && (
+      {result.author.name}
     <svg
       viewBox="-2 2 22 22"
       width="17"
