@@ -54,7 +54,7 @@ const AllAnswers = async ({ questionId, userId, totalAnswers, page, filter }: Pr
                  <p className="body-semibold text-dark300_light700 flex items-center">
   {answer.author.name}
 
-{["user_2mWKGv1qqkFoVZiERSgQYsSom2B", "user_2n5xdgqdECnSabJtgQjgvyWL2Ch"].includes(answer.author.clerkId) && (
+{["user_2msC45rbo2Xcfzx3Qs5aa5Z9UOe", "user_2n5xdgqdECnSabJtgQjgvyWL2Ch"].includes(answer.author.clerkId) && (
   <svg
     viewBox="0 0 22 22"
     width="20" // Slightly increasing size to ensure visibility
