@@ -7,7 +7,6 @@ import { SignedIn, useAuth, UserButton } from '@clerk/nextjs'; // Use useAuth ho
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Theme from './Theme';
 import MobileNav from './MobileNav';
 import GlobalSearch from '../search/GlobalSearch';
 
@@ -97,7 +96,7 @@ const Navbar = () => {
        
         )}
 
-        <Theme />
+    
 
         <SignedIn>
           <UserButton 
