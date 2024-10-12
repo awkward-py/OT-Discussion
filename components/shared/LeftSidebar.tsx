@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '../ui/button';
 import { SignedOut, useAuth } from '@clerk/nextjs';
+import Theme from './navbar/Theme';
 
 const LeftSidebar = () => {
   const { userId } = useAuth();
@@ -78,6 +79,7 @@ const LeftSidebar = () => {
               </Link>
           </div>
         </SignedOut>
+       <Theme />
     </section>
   )
 }
