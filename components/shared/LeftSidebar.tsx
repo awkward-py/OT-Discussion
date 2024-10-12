@@ -49,6 +49,8 @@ const LeftSidebar = () => {
         })}
       </div>
 
+      
+
       <SignedOut>
           <div className="flex flex-col gap-3">
               <Link href="/sign-in">
@@ -79,8 +81,9 @@ const LeftSidebar = () => {
               </Link>
           </div>
         </SignedOut>
-       <Theme />
+        <Theme />
     </section>
+    
   )
 }
 
