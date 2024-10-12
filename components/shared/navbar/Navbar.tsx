@@ -13,9 +13,6 @@ import GlobalSearch from '../search/GlobalSearch';
 
 // Define a type for user stats
 interface UserStats {
-  user: any; // Replace `any` with the actual type if available
-  totalQuestions: number;
-  totalAnswers: number;
   reputation: number; // Ensure that reputation is included
 }
 
