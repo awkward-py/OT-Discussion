@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '@/context/ThemeProvider';
 import {
   Menubar,
@@ -12,6 +12,18 @@ import Image from 'next/image';
 const Theme = () => {
   const { mode, setMode } = useTheme();
 
+  // Check and apply the user's system preference for dark mode on component mount
+  useEffect(() => {
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (systemDarkMode && mode !== 'dark') {
+      setMode('dark'); // Set to dark mode if the system preference is dark
+      localStorage.theme = 'dark'; // Store in local storage
+    } else if (!systemDarkMode && mode !== 'light') {
+      setMode('light'); // Set to light mode if the system preference is light
+      localStorage.theme = 'light'; // Store in local storage
+    }
+  }, []); // Empty dependency array to run this effect only once on mount
 
   const toggleTheme = () => {
     const newMode = mode === 'light' ? 'dark' : 'light';
@@ -44,7 +56,6 @@ const Theme = () => {
             />
           )}
         </MenubarTrigger>
-      
       </MenubarMenu>
     </Menubar>
   );
