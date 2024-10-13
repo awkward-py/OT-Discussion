@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 
 // Define the API URL with the Gemini API key from environment variables
-const API_URL = `https://generativelanguage.googleapis.com/v1beta2/models/gemini-pro:generateText?key=${process.env.OPENAI_API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta2/models/gemini-pro:generateText?key=${process.env.GEMINI_API_KEY}`;
 
 // The POST request handler function
 export const POST = async (request: Request) => {
