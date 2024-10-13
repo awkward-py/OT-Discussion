@@ -1,51 +1,52 @@
-// Import necessary modules from Next.js
 import { NextResponse } from "next/server";
 
-// Define the API URL with the Gemini API key from environment variables
 const API_URL = `https://generativelanguage.googleapis.com/v1beta2/models/gemini-pro:generateText?key=${process.env.GEMINI_API_KEY}`;
 
-// The POST request handler function
 export const POST = async (request: Request) => {
-  // Parse the JSON request to extract the question
-  const { question } = await request.json();
-
   try {
-    // Make a fetch request to the Gemini API
+    // Parse the JSON request
+    const { question } = await request.json();
+    console.log("Received question:", question); // Log the incoming question for debugging
+
+    // Make the API request to Google Gemini
     const response = await fetch(API_URL, {
-      method: 'POST', // The method is POST
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // Set content type to JSON
-        // Optionally, you can use the Authorization header for added security
+        'Content-Type': 'application/json',
+        // Optionally use Authorization header
         // 'Authorization': `Bearer ${process.env.GEMINI_API_KEY}`
       },
       body: JSON.stringify({
         prompt: {
-          text: `Tell me ${question}`  // Format the prompt to include the question
+          text: `Tell me ${question}` // Pass the question as part of the prompt
         }
       })
     });
 
-    // Check if the response status is not OK (i.e., not 2xx)
+    // Log the status and response headers for debugging
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
+
+    // Check if the response is successful (status code 2xx)
     if (!response.ok) {
-      // Parse the error response
       const errorData = await response.json();
-      console.error('Error response:', errorData);
-      // Throw an error with the status code for better error handling
+      console.error('Error response data:', errorData); // Log the full error response
       throw new Error(`Request failed with status ${response.status}`);
     }
 
-    // Parse the response as JSON
+    // Parse the response JSON
     const responseData = await response.json();
-    console.log('Response data:', responseData);  // Log the response for debugging
+    console.log('Parsed response data:', responseData); // Log the full response data
 
-    // Extract the reply text from the response data
+    // Extract the generated reply
     const reply = responseData.candidates[0]?.output || 'No response generated';
+    console.log('Generated reply:', reply); // Log the reply
 
-    // Return the reply as a JSON response
+    // Send the reply back as JSON response
     return NextResponse.json({ reply });
   } catch (error: any) {
-    // If an error occurs, log it and return the error message as a JSON response
-    console.error('Error during API request:', error.message);
+    // Log the error message and return it in the response
+    console.error('Error occurred:', error.message);
     return NextResponse.json({ error: error.message });
   }
 };
