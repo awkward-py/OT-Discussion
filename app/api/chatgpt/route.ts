@@ -4,7 +4,7 @@ export const POST = async (request: Request) => {
   const { question } = await request.json();
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://generativelanguage.googleapis.com/v1/models/gemini-pro', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
