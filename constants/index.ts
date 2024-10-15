@@ -38,6 +38,12 @@ export const sidebarLinks: SidebarLink[] = [
     route: "/ask-question",
     label: "Open a discussion",
   },
+   {
+    imgURL: "https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png",
+    route: "https://offtopics.in",
+    label: "IT Off-Topics",
+  },
+
 ];
 
 export const BADGE_CRITERIA = {
