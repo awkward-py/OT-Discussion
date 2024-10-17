@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/awkward-py/OT-Discussion">
+  <a href="https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/refs/heads/main/assets/images/logoo.png">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
