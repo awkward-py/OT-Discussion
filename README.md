@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/awkward-py/OT-Discussion/blob/main/github/ot1.png)
+![Product Name Screen Shot](https://raw.githubusercontent.com/awkward-py/OT-Discussion/main/github/ot1.png)](https://github.com/awkward-py/OT-Discussion/blob/main/github/ot1.png)
 
 OT Discussion is a platform where users can engage in discussions about various topics. The aim is to create a welcoming community for sharing ideas and opinions.
 
