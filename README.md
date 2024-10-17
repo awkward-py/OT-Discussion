@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png">
-    ![Logo](https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png)
+  
   </a>
 
 
