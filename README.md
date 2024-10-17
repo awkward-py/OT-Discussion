@@ -113,23 +113,21 @@ npm install npm@latest -g
 - Navigate to `http://localhost:3000` in your browser to access the application.
 - Explore various discussion topics and engage with other users.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add user authentication
-- [ ] Expand discussion categories
-- [ ] Introduce a tagging system for questions
-- [ ] Create user profiles with contribution statistics
-- [ ] Implement upvoting and downvoting for questions and answers
-- [ ] Develop a notification system for responses and mentions
-- [ ] Create a mobile-friendly version of the platform
-- [ ] Integrate a search functionality for quick access to discussions
-- [ ] Conduct user feedback sessions for continuous improvement
-- [ ] Implement gamification elements like badges and leaderboards
-- [ ] **Checkmark for Contribution:** Allow users to receive checkmarks based on their contributions
-
+- [✓] Add user authentication
+- [✓] Expand discussion categories
+- [✓] Introduce a tagging system for questions
+- [✓] Create user profiles with contribution statistics
+- [✓] Implement upvoting and downvoting for questions and answers
+- [✓] Develop a notification system for responses and mentions
+- [✓] Create a mobile-friendly version of the platform
+- [✓] Integrate a search functionality for quick access to discussions
+- [✓] Conduct user feedback sessions for continuous improvement
+- [✓] Implement gamification elements like badges and leaderboards
+- [✓] **Checkmark for Contribution:** Allow users to receive checkmarks based on their contributions
 
 
 <!-- CONTRIBUTING -->
