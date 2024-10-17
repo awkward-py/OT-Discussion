@@ -119,10 +119,18 @@ npm install npm@latest -g
 ## Roadmap
 
 - [ ] Add user authentication
-- [ ] Implement real-time chat features
 - [ ] Expand discussion categories
+- [ ] Introduce a tagging system for questions
+- [ ] Create user profiles with contribution statistics
+- [ ] Implement upvoting and downvoting for questions and answers
+- [ ] Develop a notification system for responses and mentions
+- [ ] Create a mobile-friendly version of the platform
+- [ ] Integrate a search functionality for quick access to discussions
+- [ ] Conduct user feedback sessions for continuous improvement
+- [ ] Implement gamification elements like badges and leaderboards
+- [ ] **Checkmark for Contribution:** Allow users to receive checkmarks based on their contributions
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
