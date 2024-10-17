@@ -12,9 +12,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="[https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png](https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/refs/heads/main/assets/images/logoo.png)">
-  
-  </a>
+ <a href="https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png">
+    <img src="https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png" alt="Logo" width="80" height="80">
+</a>
+
 
 
 
