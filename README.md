@@ -25,7 +25,7 @@
     <a href="https://github.com/awkward-py/OT-Discussion"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/awkward-py/OT-Discussion">View Demo</a>
+    <a href="https://ot-discussion.in">View Demo</a>
     ·
     <a href="https://github.com/awkward-py/OT-Discussion/issues">Report Bug</a>
     ·
