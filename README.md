@@ -153,7 +153,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Pankaj Rawat - [Your Email] - [Your LinkedIn]
+Pankaj Rawat - [awkwardpy@gmail.com] 
 
 Project Link: [https://github.com/awkward-py/OT-Discussion](https://github.com/awkward-py/OT-Discussion)
 
