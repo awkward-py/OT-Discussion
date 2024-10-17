@@ -1,6 +1,4 @@
-Here’s a customized README for your GitHub repository **OT-Discussion**:
 
-```markdown
 <div id="top"></div>
 
 <!-- PROJECT SHIELDS -->
