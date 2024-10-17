@@ -164,7 +164,6 @@ Project Link: [https://github.com/awkward-py/OT-Discussion](https://github.com/a
 
 * [Next.js Documentation](https://nextjs.org/docs)
 * [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-* [Framer Motion Documentation](https://www.framer.com/docs/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/awkward-py/OT-Discussion.svg?style=for-the-badge
@@ -179,4 +178,4 @@ Project Link: [https://github.com/awkward-py/OT-Discussion](https://github.com/a
 [license-url]: https://github.com/awkward-py/OT-Discussion/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-blue.svg?style=for-the-badge
 [linkedin-url]: https://linkedin.com/in/yourprofile
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: main/github/ot1.png
