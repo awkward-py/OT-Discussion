@@ -17,6 +17,7 @@
 </a>
 
 
+![Project Thumbnail](https://raw.githubusercontent.com/awkward-py/OT-Discussion/main/github/ot1.png)
 
 
   <h3 align="center">OT Discussion</h3>
