@@ -15,7 +15,7 @@ export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/users.svg",
     route: "/community",
-    label: "Peoples",
+    label: "Members",
   },
   {
     imgURL: "/assets/icons/star.svg",
@@ -26,7 +26,7 @@ export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/tag.svg",
     route: "/tags",
-    label: "Tags",
+    label: "Topics",
   },
   {
     imgURL: "/assets/icons/user.svg",
@@ -36,7 +36,7 @@ export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/question.svg",
     route: "/ask-question",
-    label: "Open a discussion",
+    label: "Discussion",
   },
    {
     imgURL: "https://raw.githubusercontent.com/awkward-py/Open-Source-Off-Topics/main/assets/images/logoo.png",
