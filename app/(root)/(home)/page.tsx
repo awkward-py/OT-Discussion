@@ -69,7 +69,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         ) : (
           <Link href="/sign-in">
             <Button className="bg-blue-500 hover:bg-blue-600 min-h-[46px] px-4 py-3 text-white">
-              <span className="text-white">Log In</span>
+              <span className="text-white">Join In</span>
             </Button>
           </Link>
         )}
