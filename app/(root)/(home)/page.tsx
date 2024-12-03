@@ -63,7 +63,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         {userId ? (
           <Link href="/ask-question">
             <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-              Open a Problem
+              Initiate a Concern
             </Button>
           </Link>
         ) : (
