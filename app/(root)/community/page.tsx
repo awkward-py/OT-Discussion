@@ -21,7 +21,7 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
   const UserCard = dynamic(() => import('@/components/cards/UserCard'), { ssr: false })
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">All Users</h1> 
+      <h1 className="h1-bold text-dark100_light900">All Members</h1> 
 
         <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
           <LocalSearchbar 
