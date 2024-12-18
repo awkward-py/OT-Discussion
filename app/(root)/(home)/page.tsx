@@ -55,7 +55,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="text-2xl font-bold text-gradient">
-          {name?.name ? `${name.name.split(' ')[0]}, what will you discuss today?` : 'Sign in to join the discussion!'}
+          {name?.name ? `${name.name.split(' ')[0]}, what's the hot topic for today?` : 'Sign in to join the discussion!'}
         </h1>
       </div>
 
