@@ -1,6 +1,6 @@
 
 
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 
 const Loading = () => {
@@ -8,8 +8,6 @@ const Loading = () => {
     <section>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">Hold on, this is slow... like your brain!</h1>
-
-       
       </div>
 
       <div className="mb-12 mt-11 flex flex-wrap items-center justify-between gap-5">
