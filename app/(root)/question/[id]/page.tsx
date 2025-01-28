@@ -47,6 +47,7 @@ const { userId } = auth();
            <p className="paragraph-semibold text-dark300_light700 flex items-center">
   {[ 
               'user_2mnrfhoM9HBMIi3aN3HAscS2mvI',
+              'user_2mZ9MjK0ARsTPzJZUyEC0MWzmf4',
     'user_2mbIauEsU875Pp50WflTE8icx1n',
               'user_2mxdwEQX81YYzm0dEZZOTkZAEQy'
   ].includes(result.author.clerkId) ? (
