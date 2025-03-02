@@ -9,6 +9,7 @@ import { revalidatePath } from "next/cache";
 import Answer from "@/database/answer.model";
 import Interaction from "@/database/interaction.model";
 import { FilterQuery } from "mongoose";
+import { WebSocketServer } from "@/websocket/server"; // Import WebSocket server
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
@@ -22,7 +23,7 @@ export async function getQuestions(params: GetQuestionsParams) {
     const query: FilterQuery<typeof Question> = {};
 
     if(searchQuery) {
-      const escapedSearchQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const escapedSearchQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\{code}')
       query.$or = [
         { title: { $regex: new RegExp(escapedSearchQuery, "i")}},
         { content: { $regex: new RegExp(escapedSearchQuery, "i")}},
@@ -82,7 +83,7 @@ export async function createQuestion(params: CreateQuestionParams) {
     // Create the tags or get them if they already exist
     for (const tag of tags) {
       const existingTag = await Tag.findOneAndUpdate(
-        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+        { name: { $regex: new RegExp(`^${tag}`, "i") } }, 
         { $setOnInsert: { name: tag }, $push: { questions: question._id } },
         { upsert: true, new: true }
       )
@@ -105,7 +106,11 @@ export async function createQuestion(params: CreateQuestionParams) {
     // Increment author's reputation by +5 for creating a question
     await User.findByIdAndUpdate(author, { $inc: { reputation: 5 }})
 
-    revalidatePath(path)
+    revalidatePath(path);
+
+    // Emit 'newQuestion' event via WebSocket server
+    WebSocketServer.emit('newQuestion', question);
+
   } catch (error) {
     console.log(error);
   }
