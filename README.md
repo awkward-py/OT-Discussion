@@ -1,14 +1,6 @@
 
 <div id="top"></div>
 
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -141,12 +133,6 @@ Contributions are what make the open-source community such an amazing place to l
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
