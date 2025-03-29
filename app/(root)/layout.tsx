@@ -1,8 +1,15 @@
-import LeftSidebar from '@/components/shared/LeftSidebar'
-import RightSidebar from '@/components/shared/RightSidebar'
-import Navbar from '@/components/shared/navbar/Navbar'
-import { Toaster } from '@/components/ui/toaster'
-import React from 'react'
+import dynamic from 'next/dynamic';
+import LeftSidebar from '@/components/shared/LeftSidebar';
+import RightSidebar from '@/components/shared/RightSidebar';
+import Navbar from '@/components/shared/navbar/Navbar';
+import { Toaster } from '@/components/ui/toaster';
+import React from 'react';
+
+// Dynamically import Notification to disable SSR for this component
+const Notification = dynamic(
+  () => import('@/components/shared/Notification'),
+  { ssr: false }
+);
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -20,9 +27,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <RightSidebar />
       </div>
 
+      <Notification />
       <Toaster />
     </main>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
