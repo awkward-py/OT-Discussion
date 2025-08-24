@@ -51,24 +51,36 @@ export default async function Home({ searchParams }: SearchParamsProps) {
     });
   }
 
+
+  function getGreeting() {
+    const hour = new Date().getHours();
+
+    if (hour < 12) return "Good Morning";
+    if (hour < 18) return "Good Afternoon";
+    return "Good Evening";
+  }
+
+
+    
+  
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="text-2xl font-bold text-gradient">
-          {name?.name ? `Welocme back ${name.name.split(' ')[0]}! ` : 'Sign in to join the discussion!'}
+          {name?.name ? `${getGreeting()} ${name.name.split(' ')[0]}!` : 'Sign in to join the discussion!'}
         </h1>
       </div>
 
-      <div className="flex justify-end max-sm:w-full mb-4"> {/* Added margin bottom for spacing */}
+      <div className="flex justify-end max-sm:w-full mb-4">
         {userId ? (
           <Link href="/ask-question">
             <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-              Initiate a Concern
+              Open a discussion
             </Button>
           </Link>
         ) : (
           <Link href="/sign-in">
-            <Button className="bg-blue-500 hover:bg-blue-600 min-h-[46px] px-4 py-3 text-white">
+            <Button className="primary-gradient hover:bg-blue-600 min-h-[46px] px-4 py-3 text-white">
               <span className="text-white">Join In</span>
             </Button>
           </Link>
