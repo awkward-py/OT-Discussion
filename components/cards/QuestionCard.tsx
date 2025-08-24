@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
 import RenderTag from '../shared/RenderTag';
 import Metric from '../shared/Metric';
 import { formatAndDivideNumber, getTimestamp } from '@/lib/utils';
@@ -9,10 +9,7 @@ import EditDeleteAction from '../shared/EditDeleteAction';
 interface QuestionProps {
   _id: string;
   title: string;
-  tags: {
-    _id: string;
-    name: string;
-  }[];
+  tags: { _id: string; name: string }[];
   author: {
     _id: string;
     name: string;
@@ -36,9 +33,12 @@ const QuestionCard = ({
   upvotes,
   views,
   answers,
-  createdAt
+  createdAt,
 }: QuestionProps) => {
   const showActionButtons = clerkId && clerkId === author.clerkId;
+
+  const getGradient = () =>
+    `linear-gradient(90deg, hsl(${Math.random() * 360}, 80%, 60%), hsl(${Math.random() * 360}, 80%, 60%))`;
 
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
@@ -47,8 +47,14 @@ const QuestionCard = ({
           <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
             {getTimestamp(createdAt)}
           </span>
+
           <Link href={`/question/${_id}`}>
-            <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
+            <h3
+              className="sm:h3-semibold base-semibold line-clamp-1 flex-1 bg-clip-text text-transparent"
+              style={{
+                backgroundImage: getGradient(),
+              }}
+            >
               {title}
             </h3>
           </Link>
@@ -71,14 +77,7 @@ const QuestionCard = ({
         <Metric
           imgUrl={author.picture}
           alt="user"
-          value={
-            <span className="flex items-center">
-         
-                  {author.name}
-              
-            
-            </span>
-          }
+          value={<span className="flex items-center">{author.name}</span>}
           title={` - asked ${getTimestamp(createdAt)}`}
           href={`/profile/${author._id}`}
           isAuthor
@@ -109,9 +108,8 @@ const QuestionCard = ({
           />
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default QuestionCard
+export default QuestionCard;

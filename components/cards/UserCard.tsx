@@ -46,7 +46,7 @@ const UserCard = async ({ user }: Props) => {
         role="img" 
         viewBox="0 0 40 40" 
         width="14"
-        className="inline-block" // Ensure SVG stays inline
+        className="inline-block" // 
       >
         <title>IT-Verified</title>
         <path
